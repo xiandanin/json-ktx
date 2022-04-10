@@ -1,9 +1,9 @@
 ## 导入
 ```
-org.json的扩展
+// org.json的扩展
 implementation 'io.xiandan:json-ktx:1.0.0'
 
-gson的扩展
+// gson的扩展
 implementation 'io.xiandan:gson-ktx:1.0.0'
 ```
 
@@ -76,37 +76,28 @@ val arrayValue: Array<String?> = jsonArray.toArray { src, index -> src.optString
 ```
 // 对象转json
 val jsonString = exampleObject.toJson()
-println("toJson $jsonString")
 
 // 对象转格式化后的json
 val formattedJsonString = exampleObject.toFormattedJson()
-println("toFormattedJson $formattedJsonString")
 
 // json转非空Map 解析异常时抛JsonSyntaxException
 val map: Map<*, *> = json.toMap()
-println("toMap ${map::class.java} $map")
 
 // json转可空Map
 val mapOrNull: Map<*, *>? = json.toMapOrNull()
-println("toMapOrNull $mapOrNull")
 
 // json转非空对象 解析异常时抛JsonSyntaxException
 val any: People = json.toAny()
-println("toAny ${any::class.java} $any")
 
 // json转可空对象
 val anyOrNull: People? = json.toAnyOrNull()
-println("toAnyOrNull $anyOrNull")
 
 // json转非空List 解析异常时抛JsonSyntaxException
 val list: List<People> = exampleArrayJson.toList<People>()
-println("toList ${list::class.java} $list")
 
 // json转可空List
 val listOrNull: List<People>? = arrayJson.toListOrNull<People>()
-println("toListOrNull $listOrNull")
 
 // json转非空List
 val listNotNull: List<People> = arrayJson.toListNotNull<People>()
-println("toListNotNull ${listNotNull::class.java} $listNotNull")
 ```
