@@ -12,8 +12,8 @@ import com.google.gson.reflect.TypeToken
  * Created by xiandanin on 2022-04-10 14:23
  */
 
-val gson: Gson = newGsonBuilder().create()
-private val gsonPretty = newGsonBuilder().setPrettyPrinting().create()
+val gsonKtx: Gson = newGsonBuilder().create()
+private val gsonPrettyKtx = newGsonBuilder().setPrettyPrinting().create()
 
 fun newGsonBuilder(): GsonBuilder {
     val gsonBuilder = GsonBuilder()
@@ -32,16 +32,16 @@ fun newGsonBuilder(): GsonBuilder {
 }
 
 fun Any.toJson(): String {
-    return gson.toJson(this)
+    return gsonKtx.toJson(this)
 }
 
 fun Any.toFormattedJson(): String {
-    return gsonPretty.toJson(this)
+    return gsonPrettyKtx.toJson(this)
 }
 
 @Throws(JsonSyntaxException::class)
 fun String.toMap(): Map<*, *> {
-    return gson.fromJson(this, ArrayMap::class.java)
+    return gsonKtx.fromJson(this, ArrayMap::class.java)
 }
 
 fun String.toMapOrNull(): Map<*, *>? {
@@ -54,7 +54,7 @@ fun String.toMapOrNull(): Map<*, *>? {
 
 @Throws(JsonSyntaxException::class)
 inline fun <reified T> String.toAny(): T {
-    return gson.fromJson(this, T::class.java) as T
+    return gsonKtx.fromJson(this, T::class.java) as T
 }
 
 inline fun <reified T> String.toAnyOrNull(): T? {
@@ -67,7 +67,7 @@ inline fun <reified T> String.toAnyOrNull(): T? {
 
 @Throws(JsonSyntaxException::class)
 inline fun <reified T> String.toList(): List<T> {
-    return gson.fromJson(this, object : TypeToken<List<T>>() {}.type)
+    return gsonKtx.fromJson(this, object : TypeToken<List<T>>() {}.type)
 }
 
 inline fun <reified T>  String.toListOrNull(): List<T>? {
